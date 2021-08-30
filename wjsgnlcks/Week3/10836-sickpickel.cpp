@@ -5,24 +5,29 @@
 int N, M, count;
 int arr[MAX][MAX];
 int visited[MAX];
-void DFS(int start){
+void DFS(int start)
+{
     int i;
     visited[start] = 1;
 
-    for(i = 1; i <= N; i++){
-        if(arr[start][i] && !visited[i]){
+    for (i = 1; i <= N; i++)
+    {
+        if (arr[start][i] && !visited[i])
+        {
             count++;
             DFS(i);
         }
     }
-    return; 
+    return;
 }
 
-int main(void){
+int main(void)
+{
     scanf("%d", &N);
     scanf("%d", &M);
     int a, b;
-    for(int i = 0; i < M; i++){
+    for (int i = 0; i < M; i++)
+    {
         scanf("%d %d", &a, &b);
         arr[a][b] = 1;
         arr[b][a] = 1;
