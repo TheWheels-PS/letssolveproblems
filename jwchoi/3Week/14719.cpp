@@ -1,27 +1,32 @@
-// 해설보고 이해
+/* 
+풀이 큰 틀
+내 자신을 기준으로 왼쪽에서 큰 거와 오른쪽에서 큰 거를 구한다
+그 중 작은 것과 내 자신의 값을 빼면 빗물의 양이 나온다
+*/
+
 #include <iostream>
 
 using namespace std;
 
+#define SIZE 501
+
+int ary[SIZE];
+
+int Solution(int w, int ary[])
+{
+}
+
 int main(void)
 {
-    int n;
-    cin >> n;
+    int h, w;
+    cin >> h >> w;
 
-    int dp[31] = {0};
-
-    dp[0] = 1;
-    dp[2] = 3;
-
-    for (int i = 4; i <= n; i++)
+    for (int i = 0; i < w; ++i)
     {
-        dp[i] = dp[i - 2] * 3; // 2x3 도형을 가장 오른쪽에 두는 경우, 2x3 도형이 3개이기 때문에 *3을 해준다
-        for (int j = 4; j <= i; j += 2)
-        {
-            dp[i] += dp[i - j] * 2; // n=4부터는 새로운 도형이 추가된다. 하지만 n이 4,6,8,10...일때 도형의 모양이 모두 다르기 때문에 각각 dp[i]에 더해준다.
-        }
+        cin >> ary[i];
     }
 
-    cout << dp[n];
+    cout << Solution(w, ary) << endl;
+
     return 0;
 }
