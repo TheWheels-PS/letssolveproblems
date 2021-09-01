@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+int rene[101][101] = {0};
+
+int main(){
+    int sum = 0;
+    int xl,yl,xr,yr = 0;
+    for(int i=0; i<4; i++){
+        scanf("%d %d %d %d", &xl, &yl, &xr, &yr); // 좌표들 불러오기
+        for(int i=xl; i<xr; i++){
+            for(int j=yl; j<yr; j++){
+	            rene[i][j] = 1;
+            }
+        }
+    }
+    for(int i=0; i<101; i++){
+        for(int j=0; j<101; j++){
+            if(rene[i][j] == 1) sum++;
+        }
+    }
+    printf("%d", sum);
+    return 0;
+}
