@@ -1,0 +1,56 @@
+#include <stdio.h>
+
+int main() {
+	int height[9]; // 난쟁이들 키 배열
+	int total=100;
+	int sum=0;
+	
+	// 입력
+	for (int i = 0; i < 9; i++){
+		scanf("%d", &height[i]);
+		sum += height[i];
+	}
+
+	// 얼마나 초과되었는지 확인
+	int over = sum - 100;
+	
+	// 짭 찾기
+	int dif = 0;
+	int p, q = 0;
+	for (int i=0; i<9; i++){
+		for(int j=i+1; j<9; j++){
+			dif = height[i] + height[j];
+			if (dif == over) {
+				p=i;
+				q=j;
+				break;
+			}
+		}
+	}
+	
+	int k = 0;
+	int real[7];
+	for (int i=0; i<9; i++) {
+		if (i != p && i != q){
+			real[k] = height[i];
+			k++;
+		}
+	}
+
+	// real 난쟁이들 정렬시키기
+	int temp;
+	for (int i=0; i<7; i++){
+		for (int j=i+1; j<7; j++){
+			if (real[i] > real[j]){
+				temp = real[i];
+				real[i] = real[j];
+				real[j] = temp;
+			}
+		}
+	}
+
+	//출력 (오름차순)
+	for (int i=0; i<7; i++){
+		printf("%d\n", real[i]);
+	}
+}
