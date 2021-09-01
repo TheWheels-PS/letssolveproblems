@@ -1,0 +1,30 @@
+// 공백에 따라서 구분 (공백 연속, 맨 처음 공백, 마지막 공백)
+// [자가 피드백] 공백 포함해서 모든 문자를 다 받고 공백을 인식할때마다 숫자 증가시키기
+
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+	int i, len, cnt = 0;
+	char arr[1000000];
+
+	scanf("%[^\n]", arr); // &[^\n] 은 \n 제외하고 모두 입력한다는 표현 알게되었음
+	len = strlen(arr);
+
+	if(len == 1){ // 아무것도 없는 스페이스 하나만 입력하면 0으로 출력하기
+		if(arr[0] == ' '){
+			printf("0\n");
+			return 0;
+		}
+	}
+	
+	for(i = 1; i < len-1; i++){
+		if(arr[i] == ' '){
+			cnt++;
+		}
+	}
+	
+	printf("%d\n", cnt+1);
+	return 0;
+}
