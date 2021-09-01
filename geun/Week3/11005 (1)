@@ -1,0 +1,48 @@
+// 10진법을 다른 진법(A)으로 나타낼 아이디어
+// A로 계속 나눠주면서 마지막 몫과 연산해왔던 나머지들을 순서에 맞게 출력
+
+#include<stdio.h>
+#include<string.h>
+ 
+int main()
+{
+    int a, b; // 2<= b <= 36;
+    int nota[35];
+    char backup[35+1]={};
+    char m;
+    scanf("%d %d",&a,&b);
+    int i=0;
+    if(b>1 && b<37)
+    {
+        while(a/b > 0)
+        {
+            nota[i] = a%b;
+            a = a/b;
+ 
+            if(nota[i]>= 10 && nota[i] < b)
+            {
+                backup[i] = nota[i] - 10 +'A';
+            }
+            else if(nota[i] < 10)
+                backup[i] = nota[i] + '0';
+            i++;
+        }
+        if(a>= 10 && a< b)
+        {
+            m = a - 10 +'A';
+        }
+        else
+            m = a +'0';
+ 
+        printf("%c",m);
+ 
+        int backlen = strlen(backup);
+        for(int i=backlen-1; i>=0 ;i--)
+        {
+            printf("%c",backup[i]);
+        }
+ 
+        printf("\n");
+    }
+    return 0;
+}
