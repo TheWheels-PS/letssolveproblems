@@ -1,0 +1,39 @@
+//bfs 탐색으로 1번 컴퓨터에 연결된 애들 찾기
+// 연결상태 (2차원배열) 방문여부(1차원배열) 로 나눠서 탐색
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int pc[100][100];
+int visit[100];
+int virus;
+
+void connect(int n, int k);
+
+int main (void){
+    int n, con;
+    int x, y;
+    
+    scanf("%d", &n);
+    scanf("%d", &con);
+    for(int i=0; i<con; i++){
+        scanf("%d %d", &x, &y);
+        pc[x-1][y-1] = 1;
+        pc[y-1][x-1] = 1;
+        
+    }
+    visit[0] = 1;
+    connect(n, 0);
+    printf("%d\n", virus);
+}
+
+void connect(int n, int k){
+    for(int i=0; i<n; i++){
+        if(visit[i] == 0 && pc[k][i] == 1){
+            visit[i] = 1;
+            connect(n, i);
+            virus ++;
+            
+        }
+    }
+}
