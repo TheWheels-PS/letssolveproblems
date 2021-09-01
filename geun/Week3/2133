@@ -1,0 +1,30 @@
+// 홀수일 때는 경우의 수가 0. 즉 2씩 키워가면서 계산
+// 3x2 일때 3을 제외하고는, N이 커짐에 따라 각 케이스마다 가능한 경우는 2개씩 존재.
+// N=4,6,8때마다 그 N에서만 고유하게 가능한 경우들이 2개씩 존재. 그리고 N보다 작은 짝수에서의 케이스들의 결합으로 모든 경우의 수가 만들어짐.
+// 즉 점화식은, f(n) = 3*f(n-2) + 2*f(n-4) + 2*f(n-6)+ … + 2 (마지막의 2는 마지막 케이스)
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void) {
+	int i,j,input,*s;
+	scanf("%d",&input);
+	if(input%2!=0){
+		printf("0");
+		return 0;
+	}
+
+	s = (int*)malloc(sizeof(int)*(input/2));
+	s[0]=3;
+	for(i=3;i<input;i+=2){
+		s[i/2]=3*s[(i-2)/2]+2;
+		for(j=1;j<i-2;j+=2){
+			s[i/2]+=2*s[j/2];
+
+		}
+	}
+
+	printf("%d",s[input/2-1]);
+	return 0;
+
+}
