@@ -1,0 +1,30 @@
+//피보나치 수열을 재귀함수로 풀면 너무 느려질 것 같아 배열을 사용해서 풀어봄
+//int 썼는데 오버플로우가 나서 찾아보니까 동적 포인터 할당 해야됨을 알아냈음 (long long int형)
+
+#include <stdio.h>
+#include <stdlib.h>
+
+long long int *fib;
+
+void fibo(int n) {
+	fib[n] = fib[n-1] + fib[n-2];
+}
+
+int main() {
+	int n;
+	scanf("%d", &n);
+	fib = (long long int*)malloc(sizeof(long long int)*(n+1)); // 구글링 피드백
+
+	fib[0] = 0;
+	fib[1] = 1;
+
+	for (int i=2; i <= n; i++){ // 배열이므로 앞의 0과 1번째 값은 따로 선언
+		fibo(i);
+	}
+
+	printf("%lld\n", fib[n]); // %lld means "print long long int variable";
+	free(fib);
+	fib = NULL;
+
+	return 0;
+}
