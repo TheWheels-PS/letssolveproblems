@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <string.h>
+
+int main(void){
+	char arr[101];
+	scanf("%s", arr);
+	int len, sum; // 변수선언 (문자 길이 받을 변수, 그리고 정해진 공식에 따라 크로아티아 알파벳 바꿔줄 변수)
+
+	len = strlen(arr); // 변수에 문자 넣기
+	sum = strlen(arr);
+	for (int i=0; i<len; i++){
+		if(arr[i] == 'c' || arr[i] == 's' || arr[i] == 'z') { 
+			if (arr[i+1] == '=' || arr[i+1] == '-') sum--; // 크로아티아 알파벳이니까 개수에서 차감
+		}
+		else if (arr[i] == 'n' || arr[i] =='l') { 
+			if (arr[i+1] == 'j') sum--;
+		}
+		else if (arr[i] == 'd'){ // d는 d-, dz= 있으니까 각각 나눠서
+			if (arr[i+1] == '-') sum--;
+			else if (arr[i+1] == 'z' && arr[i+2] == '=') sum--; // z랑 = 찾아서 있으면 차감
+		}
+	}
+	printf("%d\n", sum); // 개수 출력
+
+	return 0;
+}
+		
