@@ -1,0 +1,29 @@
+// 비어있는 가운데 좌표가 3으로 나눴을 때 1이 남는 조건을 갖는다
+// a%3 == 1 && b%3 == 1 
+// 이것을 재귀시키려면 큰쪽 or 작은쪽 사각형. 그러나 이 위의 식은 어떤 크기의 사각형이든 가운데가 비어있음을 의미한다
+// 즉, 입력받은 사이즈를 3으로 역으로 나눈다. (3의 제곱꼴로 N이 주어지므로) 작은 사각형의 빈 곳을 찾아내 비우면 된다
+
+#include <stdio.h>
+
+void starhole(int a, int b, int n){ // 좌표 (a,b)
+	if ((a / n) % 3 == 1 && (b / n) % 3 == 1) // 
+		printf(" ");
+	else {
+		if (n / 3 == 0) // 
+			printf("*"); 
+		else
+			starhole(a, b, n/3);
+	}
+}
+
+main() {
+	int n;
+	scanf("%d", &n);
+	int i, j;
+	for(i=0; i<n; i++){
+		for(j=0; j<n; j++){
+			starhole(i,j,n);
+		}
+		printf("\n");
+	}
+}
