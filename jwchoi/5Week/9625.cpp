@@ -1,5 +1,10 @@
+/*  
+문제를 분석하다보니까 피보나치 수열인 것을 확인
+이후 재귀함수로 문제를 구현하려고 하니까 시간초과 문제 발생
+그래서 반복문을 사용해서 문제해결
+*/
+
 #include <iostream>
-#include <vector>
 
 using namespace std;
 
