@@ -1,4 +1,4 @@
-/* 
+/*
 그리디 알고리즘을 사용한 방법이다.
 
 Q1
@@ -16,27 +16,24 @@ DP로 푸는 방법이 이해가 가지 않는다.
 
 using namespace std;
 
-int main(void)
-{
-    int n = 0, bag = 0;
+int main(void) {
+  int n = 0, bag = 0;
 
-    cin >> n;
+  cin >> n;
 
-    while (n >= 0)
-    {
-        if (n % 5 == 0)
-        {
-            bag += (n / 5);
-            cout << bag << endl;
-            return 0;
-        }
-
-        n -= 3;
-
-        ++bag;
+  while (n >= 0) {
+    if (n % 5 == 0) {
+      bag += (n / 5);
+      cout << bag << endl;
+      return 0;
     }
 
-    cout << -1 << endl;
+    n -= 3;
 
-    return 0;
+    ++bag;
+  }
+
+  cout << -1 << endl;
+
+  return 0;
 }
