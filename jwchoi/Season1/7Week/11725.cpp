@@ -41,7 +41,6 @@ int main(void) {
   }
 
   visited = vector<bool>(N + 1, false);
-
   for (int i = 0; i < adj.size(); ++i) {
     sort(adj[i].begin(), adj[i].end());
   }
