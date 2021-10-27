@@ -278,12 +278,12 @@ int main()
 
     inorder(t, t->root);
 	
-	int answer[ANS_LEN];
-	int ans_cnt = 0; // 가능한 경로에 대해 블랙노드의 개수를 담을 배열 크기 변수
-	get_height(t->root, answer, &ans_cnt, 0);
-	for(int i = 0; i < ans_cnt; i++){
-		printf("%d ", answer[i]);
-	}	
-	printf("\n");
+    int answer[ANS_LEN];
+    int ans_cnt = 0; // 가능한 경로에 대해 블랙노드의 개수를 담을 배열 크기 변수
+    get_height(t->root, answer, &ans_cnt, 0);
+    for(int i = 0; i < ans_cnt; i++){
+ 	printf("%d ", answer[i]);
+    }
+    printf("\n");
     return 0;
 }
