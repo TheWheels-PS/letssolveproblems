@@ -243,8 +243,14 @@ void inorder(rbtree *t, node *n)
         inorder(t, n->right);
     }
 }
+
+int isitNil(node * now){
+	if(now->left == NULL && now->right == NULL) return 1;
+	return 0;
+}
+
 void get_height(node * now, int * answer, int * ans_cnt, int height){
-	if(now == NULL){
+	if(isitNil(now)){
 		answer[(*ans_cnt)++] = height;
 		return;
 	}
@@ -282,8 +288,8 @@ int main()
     int ans_cnt = 0; // 가능한 경로에 대해 블랙노드의 개수를 담을 배열 크기 변수
     get_height(t->root, answer, &ans_cnt, 0);
     for(int i = 0; i < ans_cnt; i++){
- 	printf("%d ", answer[i]);
-    }
+	printf("%d ", answer[i]);
+    }	
     printf("\n");
     return 0;
 }
