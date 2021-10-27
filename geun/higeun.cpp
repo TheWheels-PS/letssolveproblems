@@ -244,20 +244,16 @@ void inorder(rbtree *t, node *n)
     }
 }
 
-int isitNil(node * now){
-	if(now->left == NULL && now->right == NULL) return 1;
-	return 0;
-}
 
-void get_height(node * now, int * answer, int * ans_cnt, int height){
-	if(isitNil(now)){
+void get_height(rbtree * tree, node * now, int * answer, int * ans_cnt, int height){
+	if(tree->NIL == now){
 		answer[(*ans_cnt)++] = height;
 		return;
 	}
 	
 	if(now->color == 0) height += 1;
-	get_height(now->left, answer, ans_cnt, height)	;
-	get_height(now->right, answer, ans_cnt, height)	;
+	get_height(tree, now->left, answer, ans_cnt, height)	;
+	get_height(tree, now->right, answer, ans_cnt, height)	;
 }
 
 int main()
@@ -284,12 +280,12 @@ int main()
 
     inorder(t, t->root);
 	
-    int answer[ANS_LEN];
-    int ans_cnt = 0; // 가능한 경로에 대해 블랙노드의 개수를 담을 배열 크기 변수
-    get_height(t->root, answer, &ans_cnt, 0);
-    for(int i = 0; i < ans_cnt; i++){
-	printf("%d ", answer[i]);
-    }	
-    printf("\n");
+	int answer[ANS_LEN];
+	int ans_cnt = 0; // 가능한 경로에 대해 블랙노드의 개수를 담을 배열 크기 변수
+	get_height(t, t->root, answer, &ans_cnt, 0);
+	for(int i = 0; i < ans_cnt; i++){
+		printf("%d ", answer[i]);
+	}	
+	printf("\n");
     return 0;
 }
