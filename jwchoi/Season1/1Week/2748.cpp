@@ -1,4 +1,6 @@
-#include <iostream>
+#include <bits/stdc++.h>
+
+using namespace std;
 
 long long data[91];
 
@@ -17,7 +19,7 @@ int main() {
   int num;
   long long result;
 
-  scanf("%d", &num);
+  cin >> num;
 
   result = Fibonacci(num);
   printf("%lld", result);

@@ -1,13 +1,13 @@
-#include <stdio.h>
-#include <string.h>
+#include <bits/stdc++.h>
+
+using namespace std;
 
 int main() {
   char words[101];
   int len = 0;
-  int cnt = 0;
   int cnt_c = 0;
 
-  scanf("%s", words);
+  cin >> words;
   len = strlen(words);
 
   for (int i = 0; i < len; ++i) {
@@ -32,7 +32,7 @@ int main() {
     }
   }
 
-  printf("%d", len - cnt_c);
+  cout << len - cnt_c;
 
   return 0;
 }
