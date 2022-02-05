@@ -7,7 +7,7 @@
 using namespace std;
 
 vector<bool> visited;
-vector< vector<int> > adj;
+vector<vector<int>> adj;
 
 int parent[SIZE];
 
